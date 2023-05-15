@@ -1,51 +1,85 @@
 ---
+import { Signal } from 'astro';
+
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
-
-import fleekLogo from "../resources/fleekLogo.svg";
-import fleekIcon from "../resources/fleekIcon.svg";
-import astroLogo from "../resources/astroLogo.svg";
-import astroIcon from "../resources/astroIcon.svg";
+import vcIcon from "../resources/vcIcon.jpeg";
 import addIcon from "../resources/addIcon.svg";
+import jargonIcon from "../resources/jargonIcon.jpeg";
+
 ---
 
-<Layout title="Welcome to Astro.">
+
+<Layout title="Welcome to Venture Jargon">
   <main>
     <div class="title-container">
-      <img class="logo" src={fleekLogo} />
+      <img class="logo" src={vcIcon} />
       <img src={addIcon} />
-      <img class="logo" src={astroLogo} />
+      <img class="logo" src={jargonIcon} />
     </div>
-    <p class="description">
-      This is a template for creating an Astro site and deploying it on Fleek.
+    <p class="title">
+      Welcome to Venture Jargon <br/>
+      <span class="sub-title-small">Answer 3 questions and then  pitch your favorite VC</span>
     </p>
-    <ul role="list" class="link-card-grid">
-      <Card
-        icon={fleekIcon}
-        href="https://docs.fleek.xyz/"
-        title="Fleek Documentation"
-        body="Learn about Fleek & the available services by cheking our official docs."
-      />
-      <Card
-        icon={astroIcon}
-        href="https://docs.astro.build/en/concepts/why-astro/"
-        title="Astro Documentation"
-        body="Learn about how Astro works and explore the official API docs."
-      />
-      <Card
-        icon={fleekIcon}
-        href="https://blog.fleek.xyz/"
-        title="Fleek Blog Post"
-        body="Checkout our Blog post about this Astro template."
-      />
-      <Card
-        icon={astroIcon}
-        href="https://astro.build/integrations/"
-        title="Astro Integrations"
-        body="Supercharge your project with new frameworks and libraries."
-      />
+    <p class="description">
+      <span class="icon">😎</span>
+      If you are not familiar with Jargon, <br> start with the <a href="https://jake.mirror.xyz/sPZECVTkrbVq4DerB13Thvqq_XqsDGwTBDD3SSzdI44">introductory article</a> and <a href="https://github.com/jbrukh/gpt-jargon">Github</a>
+      <span class="icon">😎</span>
+    </p>
+  
+    <ul role="list" class="link-card-row">
+      <li>
+        <h3>Venture Capitalist</h3>
+        <p class="description-text">Which VC would you like to speak to?</p>
+        <select id="ventureCapital" class="input-field">
+          <option value="">Select Venture Capital Fund</option>
+          <option value="Andreessen Horowitz (a16z)">Andreessen Horowitz (a16z)</option>
+          <option value="First Round Capital">First Round Capital</option>
+          <option value="Coinfund">Coinfund</option>
+          <option value="General Catalyst">General Catalyst</option>
+          <option value="Greylock Partners">Greylock Partners</option>
+          <option value="Sequoia Capital">Sequoia Capital</option>
+          <option value="TRGC">TRGC</option>
+        </select>
+      </li>
+      <li>
+        <h3>Round</h3>
+        <p class="description-text">Which funding round are you looking to raise?</p>
+        <select id="round" class="input-field">
+          <option value="">Select Target Round</option>
+          <option value="Pre-Seed">Pre-Seed</option>
+          <option value="Seed">Seed</option>
+          <option value="Series A">Series A</option>
+          <option value="Series B">Series B</option>
+          <option value="Series C or more">Series C or more</option>
+          <option value="No particular round">No particular round</option>
+        </select>
+      </li>
+      <li>
+        <h3>Length of Pitch</h3>
+        <p class="description-text">How long do you want this convo to be?</p>
+        <select id="pitchLength" class="input-field">
+          <option value="">Select Amount of Time for Pitch</option>
+          <option value="2 minutes">2 minutes</option>
+          <option value="5 minutes">5 minutes</option>
+          <option value="10 minutes">10 minutes</option>
+          <option value="30 minutes">30 minutes</option>
+        </select>
+      </li>
+      <li>
+        <h3>What do I do next? </h3>
+        <p class="description-text">Copy the text below and paste it into ChatGPT. <br> This will start a conversation with you and an AI Venture Capitalist about your startup. </p>
+        
+    
     </ul>
+  
+    <div class="output-container">
+      <h3>ChatGPT prompt</h3>
+      <textarea id="combinedOutput" readonly></textarea>
+      <button id="copyButton" class="copy-button">Copy to Clipboard</button>
+    </div>
   </main>
+  
 </Layout>
 
 <style>
@@ -53,15 +87,25 @@ import addIcon from "../resources/addIcon.svg";
     width: 200px;
   }
 
+
   main {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 40px;
+    gap: 10px;
     max-width: 850px;
     margin: 0 auto;
-    height: 100vh;
+    
+  }
+
+  .sub-title-small {
+    font-size: 24px;
+    line-height: 34px;
+    text-align: center;
+    color: #ffffff;
+    font-style: italic;
+    width: 752px;
   }
 
   .title-container {
@@ -69,19 +113,145 @@ import addIcon from "../resources/addIcon.svg";
     flex-direction: row;
     align-items: center;
     gap: 50px;
+    margin-top: 5vh;
   }
-
-  .description {
-    font-size: 30px;
-    line-height: 41px;
+  .title {
+    font-size: 38px;
+    line-height: 34px;
     text-align: center;
     color: #e5e7eb;
     width: 752px;
   }
 
-  .link-card-grid {
+  .sub-title {
+    font-size: 34px;
+    line-height: 34px;
+    text-align: center;
+    color: #e5e7eb;
+    width: 752px;
+  }
+  .description {
+    font-size: 24px;
+    line-height: 24px;
+    text-align: center;
+    color: #e5e7eb;
+    width: 752px;
+    outline-style: inset; 
+    padding: 10px;
+    
+  }
+
+  .link-card-row {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 15px;
+    width: 90%;
+    padding: 5px;
+    row-gap: 5px;
+    column-gap: 5px;
+
+  }
+
+  h3 {
+    color: #ffffff; 
+    font-family: default;
+    font-style: normal;
+    text-align-last: center;
+  }
+  .input-field {
+    width: 100%;
+    text-align-last: center;
+    align-self: center;
+    padding: 5px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    outline: none;
+    transition: box-shadow 0.3s;
+    margin: 5px;
+  }
+
+  .input-field:focus {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .description-text {
+    color: #ffffff;
+    text-align: center;
+  }
+  .output-container {
+    margin-top: 5px;
+  }
+
+  .output-section {
+    position: relative;
+    width: 100%;
+  }
+  textarea {
+    width: 100%;
+    height: 150px;
+
+  }
+  .textbox-container {
+    width: 100%;
+    margin: 0 auto;
+    text-color: #ffffff;
+  }
+
+  .styled-textbox {
+    width: 100%;
+    height: 150px;
+    padding: 2px;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    background-color: #fff;
+    color: black;
+    font-size: 24px;
+    font-family: inherit;
+    resize: none;
+    box-shadow: 0 4px 6px rgba(81, 66, 66, 0.1);
+    outline: none;
   }
 </style>
+
+<script>
+  const ventureCapitalSelect = document.getElementById('ventureCapital');
+  const roundSelect = document.getElementById('round');
+  const pitchLengthSelect = document.getElementById('pitchLength');
+  const combinedOutput = document.getElementById('combinedOutput');
+  const copyButton = document.getElementById('copyButton');
+
+  function updateCombinedOutput() {
+    const ventureCapital = ventureCapitalSelect.value;
+    const round = roundSelect.value;
+    const pitchLength = pitchLengthSelect.value;
+
+    const outputLines = [];
+    outputLines.push('+++ VC-jargon');
+    outputLines.push(`* You are a crypto venture capitalist from ${ventureCapital}`);
+    outputLines.push(`* You should always give me feedback about my startup looking for ${round} funding fits the ${ventureCapital} thesis after you evaluate my answer`);
+    outputLines.push(`* As we approach the ${pitchLength} mark, please wrap up the conversation and let me know if you will invest or not`);
+    outputLines.push('@repeat:');
+    outputLines.push('  -- Ask me a question about my new startup');
+    outputLines.push('  /wait');
+    outputLines.push('  -- Evaluate my answer, unless');
+    outputLines.push('  /goto @repeat');
+    outputLines.push('+++');
+
+    const output = outputLines.join('\n');
+    combinedOutput.value = output;
+  }
+
+  ventureCapitalSelect.addEventListener('change', updateCombinedOutput);
+  roundSelect.addEventListener('change', updateCombinedOutput);
+  pitchLengthSelect.addEventListener('change', updateCombinedOutput);
+
+  copyButton.addEventListener('click', function () {
+    combinedOutput.select();
+    document.execCommand('copy');
+    copyButton.textContent = 'Copied!';
+    setTimeout(() => {
+      copyButton.textContent = 'Copy to Clipboard';
+    }, 2000);
+  });
+
+  updateCombinedOutput(); // Initialize the combined output
+</script>
