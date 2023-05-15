@@ -1,6 +1,5 @@
 # build output
-dist/https://github.com/RichardJamesLopez/astro-jargon.git
-
+dist/
 # generated types
 .astro/
 
