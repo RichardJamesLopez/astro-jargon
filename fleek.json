@@ -1,0 +1,6 @@
+{
+  "id": "clho3ca130000mi08nf6y5dsq",
+  "name": "venture-jargon",
+  "distDir": "public",
+  "buildCommand": "yarn run build"
+}
