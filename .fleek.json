@@ -1,5 +1,6 @@
 {
     "id": "clho3ca130000mi08nf6y5dsq",
+    "image": "node:lts",
     "name": "venture-jargon",
     "distDir": "dist",
     "buildCommand": "npm install && npm run build"
