@@ -3,5 +3,6 @@
     "image": "node:slim",
     "name": "venture-jargon",
     "distDir": "dist",
-    "buildCommand": "npm install && npm run build"
+    "buildCommand": "npm install && npm run build", 
+    "publicDir": "build"
   }
