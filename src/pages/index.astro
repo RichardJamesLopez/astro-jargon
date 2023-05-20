@@ -87,63 +87,68 @@ import jargonIcon from "/public/jargonIcon.jpeg";
     width: 200px;
   }
 
-
   main {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    max-width: 850px;
+    gap: 5px;
+    max-width: 90vw; /* Adjust the maximum width to fit most iPhone dimensions */
     margin: 0 auto;
-    
+    padding: 10px;
+    flex-wrap: wrap;
   }
 
   .sub-title-small {
-    font-size: 24px;
-    line-height: 34px;
+    font-size: 20px; /* Adjust the font size to ensure readability on smaller screens */
+    line-height: 28px;
     text-align: center;
     color: #ffffff;
     font-style: italic;
-    width: 752px;
+    width: 80%; /* Adjust the width to fit within the screen */
+    max-width: 465px; /* Set a maximum width to prevent excessive stretching on wider screens */
   }
 
   .title-container {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 50px;
-    margin-top: 5vh;
+    justify-content: center;
+    gap: 5px;
+    margin-top:5vh;
   }
   .title {
-    font-size: 38px;
-    line-height: 34px;
+    font-size: 28px;
+    line-height: 28px;
     text-align: center;
     color: #e5e7eb;
-    width: 752px;
+    width: 700px;
   }
 
   .sub-title {
-    font-size: 34px;
+    font-size: 16px;
     line-height: 34px;
     text-align: center;
     color: #e5e7eb;
-    width: 752px;
+    width: 700px;
   }
   .description {
+    align-items: center;
     font-size: 24px;
     line-height: 24px;
     text-align: center;
     color: #e5e7eb;
-    width: 752px;
+    width: 400px;
     outline-style: inset; 
     padding: 10px;
     
   }
 
   .link-card-row {
-    display: grid;
-    width: 90%;
+    display: table-row-group;
+    align-self: center;
+    grid-template-columns: 1fr 1fr;
+    width: 80%;
     padding: 5px;
     row-gap: 5px;
     column-gap: 5px;
@@ -166,7 +171,7 @@ import jargonIcon from "/public/jargonIcon.jpeg";
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     outline: none;
     transition: box-shadow 0.3s;
-    margin: 5px;
+    
   }
 
   .input-field:focus {
@@ -178,26 +183,28 @@ import jargonIcon from "/public/jargonIcon.jpeg";
     text-align: center;
   }
   .output-container {
-    margin-top: 5px;
+    align-items: center;
+    margin-top: 5vh;
+    width: 80%;
   }
 
   .output-section {
     position: relative;
-    width: 100%;
+    width: 80%;
   }
   textarea {
-    width: 100%;
+    width: 80%;
     height: 150px;
 
   }
   .textbox-container {
-    width: 100%;
-    margin: 0 auto;
+    width: 80%;
+    height: 80%;
     text-color: #ffffff;
   }
 
   .styled-textbox {
-    width: 100%;
+    width: 80%;
     height: 150px;
     padding: 2px;
     border: 2px solid #fff;
@@ -210,6 +217,98 @@ import jargonIcon from "/public/jargonIcon.jpeg";
     box-shadow: 0 4px 6px rgba(81, 66, 66, 0.1);
     outline: none;
   }
+
+  /* Styles for mobile devices */
+  @media (max-width: 367px) {
+    .container {
+      /* Mobile-specific styles */
+    }
+
+    .sub-title-small {
+      /* Mobile-specific styles */
+    }
+
+    .title-container {
+      /* Mobile-specific styles */
+    }
+
+    .title {
+      /* Mobile-specific styles */
+    }
+
+    .sub-title {
+      /* Mobile-specific styles */
+    }
+
+    .description {
+      /* Mobile-specific styles */
+    }
+
+    .link-card-row {
+      /* Mobile-specific styles */
+    }
+
+    .input-field {
+      /* Mobile-specific styles */
+    }
+
+    .description-text {
+      /* Mobile-specific styles */
+    }
+
+    .output-container {
+      /* Mobile-specific styles */
+    }
+
+    /* Add more mobile-specific styles as needed */
+  }
+
+  /* Styles for iPad devices */
+  @media (min-width: 368px) and (max-width: 1023px) {
+    .container {
+      /* iPad-specific styles */
+    }
+
+    .sub-title-small {
+      /* iPad-specific styles */
+    }
+
+    .title-container {
+      /* iPad-specific styles */
+    }
+
+    .title {
+      /* iPad-specific styles */
+    }
+
+    .sub-title {
+      /* iPad-specific styles */
+    }
+
+    .description {
+      /* iPad-specific styles */
+    }
+
+    .link-card-row {
+      /* iPad-specific styles */
+    }
+
+    .input-field {
+      /* iPad-specific styles */
+    }
+
+    .description-text {
+      /* iPad-specific styles */
+    }
+
+    .output-container {
+      /* iPad-specific styles */
+    }
+
+    /* Add more iPad-specific styles as needed */
+  }
+
+  /* Styles for other devices or desktop views */
 </style>
 
 <script>
