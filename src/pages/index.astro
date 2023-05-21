@@ -118,7 +118,7 @@ import jargonIcon from "/public/jargonIcon.jpeg";
     margin-top:5vh;
   }
   .title {
-    font-size: 28px;
+    font-size: 36px;
     line-height: 28px;
     text-align: center;
     color: #e5e7eb;
@@ -146,12 +146,12 @@ import jargonIcon from "/public/jargonIcon.jpeg";
 
   .link-card-row {
     display: table-row-group;
-    align-self: center;
+    align-items: center;
     grid-template-columns: 1fr 1fr;
-    width: 80%;
+    width: 50%;
     padding: 5px;
-    row-gap: 5px;
-    column-gap: 5px;
+    column-gap: 0px;
+    card-shadow: 0 4px #999;
 
   }
 
@@ -171,7 +171,6 @@ import jargonIcon from "/public/jargonIcon.jpeg";
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     outline: none;
     transition: box-shadow 0.3s;
-    
   }
 
   .input-field:focus {
@@ -183,9 +182,13 @@ import jargonIcon from "/public/jargonIcon.jpeg";
     text-align: center;
   }
   .output-container {
-    align-items: center;
-    margin-top: 5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center the content horizontally */
+    justify-content: center; /* Center the content vertically */
+    margin-top: 5px;
     width: 80%;
+    gap: 10px;
   }
 
   .output-section {
@@ -193,18 +196,19 @@ import jargonIcon from "/public/jargonIcon.jpeg";
     width: 80%;
   }
   textarea {
-    width: 80%;
+    
+    width: 50%;
     height: 150px;
 
   }
   .textbox-container {
-    width: 80%;
-    height: 80%;
+    width: 50%;
+    height: 100%;
     text-color: #ffffff;
   }
 
   .styled-textbox {
-    width: 80%;
+    width: 50%;
     height: 150px;
     padding: 2px;
     border: 2px solid #fff;
@@ -216,6 +220,19 @@ import jargonIcon from "/public/jargonIcon.jpeg";
     resize: none;
     box-shadow: 0 4px 6px rgba(81, 66, 66, 0.1);
     outline: none;
+  }
+  .copy-button {
+    gap: 5px;
+    padding: 15px 25px;
+  font-size: 12px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: black;
+  background-color: #ffffff;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 4px #999;
   }
 
   /* Styles for mobile devices */
